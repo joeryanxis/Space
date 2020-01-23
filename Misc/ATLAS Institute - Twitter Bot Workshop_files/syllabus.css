@@ -1,0 +1,354 @@
+/*-----------------------------------------------------------------------------
+Primary Mouse & the Billionaire Education Style Sheet
+
+version:   2.0
+author:    Mouse & the Billionaire
+email:     matt@mouseandthebillionaire.com
+website:   http://www.mouseandthebillionaire.com
+page:	   Syllabi for classes taught in Fall 2015
+-----------------------------------------------------------------------------*/
+
+/* Page Styles */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	text-align: center;
+	background-color: #f6f6f3;
+}
+
+body {
+	margin: 0 auto;
+	min-width: 1020px;
+	font-family: "CenturyGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height:20px;
+	color: #333;
+}
+
+#page-container {
+	min-width: 1020px;
+	padding: 40px;
+	padding-right: 80px;
+	font-size:.95em;
+	line-height:1em;
+	text-align: center;
+}
+
+/* hs */
+h1, h2, h3, h4 {
+	text-transform: uppercase;
+	color: #000;
+}
+
+/* Header */
+
+header {
+	color: #fff;
+}
+
+header h1 {
+	font-size: 250%;
+	line-height: 80%;
+	font-weight: lighter;
+}
+
+header h2 {
+	line-height: 16px;
+}
+
+header h3 {
+	font-weight: lighter;
+}
+
+/* Inner Layout */
+
+#mainNav {
+	background-color: #FFD200;
+	padding: 10px;
+	font-size: 16px;
+	text-align: right;
+	font-weight: bolder;
+	position: fixed;
+	width: 100%;
+	z-index: 10;
+}
+
+#mainNav li {
+	text-decoration: none;
+	display: inline;
+	padding-right: 20px;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+#mainNav li:last-child {
+	padding-right: 80px;
+}
+
+#mainNav a {
+	color: #000;
+}
+
+#mainNav a:hover {
+	color: #fff;
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease; 
+}
+
+
+
+#subNav {
+	padding: 10px;
+	padding-right: 40px;
+	font-size: 12px;
+	text-align: right;
+	font-weight: bolder;
+}
+
+#subNav a {
+	text-transform: uppercase;
+	padding-right: 20px;
+	color: #FFD200;
+}
+
+#content {
+	/*min-width: 900px; */
+	text-align:left;
+	clear:both;
+}
+
+#sidebar {
+	padding-top: 40px;
+	position: fixed;
+}
+
+#main {
+	float: left;
+	width: 70%;
+	padding-left: 300px;
+	border-left-width: 0.25px;
+	/* border-left-style: solid; */
+	border-left-color: #666;
+	font-size: 100%;
+	line-height: 180%;
+	padding-bottom: 180px;
+	overflow: auto;
+}
+
+/* Gallery */
+
+#gallery div {
+	font-size: 0;
+}
+
+#gallery a {
+	font-size: 16px;
+	display: inline-block;
+	margin-bottom: 8px;
+	width: calc(50% - 4px);
+	margin-right: 8px;
+}
+
+#gallery a:nth-of-type(2n){
+	margin-right: 0;
+}
+
+@media screen and (min-width: 50em) {
+  #gallery a {
+    width: calc(25% - 6px);
+  }
+
+  #gallery a:nth-of-type(2n) {
+    margin-right: 8px;
+  }
+
+  #gallery a:nth-of-type(4n) {
+    margin-right: 0;
+  }
+}
+
+/* Inner Styles */
+
+p {
+	line-height:1.6em;
+}
+
+dt {
+	color: #000;
+	padding-bottom: 5px;
+}
+
+dd {
+	padding-bottom: 10px;
+}
+
+li {
+	line-height: 2em;
+}
+
+strong {
+	color: #000;
+}
+
+#header {
+	margin-top: -50px;
+	background: #db6d16 url (http://www.mouseandthebillionaire.com/images/logo.jpg);
+	padding-top: -50px;
+	top: -50px;
+}
+
+.img {
+	border: 1px solid #333333;
+}
+
+.hidden {
+	display: none;
+}
+
+section {
+	padding-top: 30px;
+}
+
+pre {
+	background: #fff;
+	color: #000;
+}
+
+/* Links */
+
+a {
+	color: #BF9D00;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #FFD200;
+}
+
+a:visited {
+	color: #7F6900;
+	text-decoration:none;
+}
+
+a.anchor {
+	color:#73B2BF;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+}
+
+#main h2 {
+	text-transform: uppercase;
+	color: #FFD200;	
+}
+
+a.pageMarker {
+	color: #fff;
+}
+
+#main h3 {
+	text-transform: uppercase;
+	width: 100%;
+	border-bottom:1px dotted #d3d3d3;
+	border-color: #000;
+	padding: 5px 0;
+	clear:both;
+}
+
+.challenges li {
+	padding-top: 5px;
+	list-style-type: none;
+	clear:both;
+}
+
+.challenges img {
+	float: left;
+	width: 100px;
+	padding-right: 20px;
+	
+}
+
+.challenges p {
+	float: left;
+	width: 500px;	
+}
+
+.box {
+	color: #E6E3D7;
+}
+
+.resources li {
+	padding-bottom: 10px;
+}
+
+
+/* Schedule Table */
+
+#schedule table {
+	width: 100%;
+}
+
+#schedule table tr.header {
+	background-color: #74b29a;
+	color: #000;
+}
+
+#schedule table td {
+	padding: 5px 10px;
+	border: thin solid #333;
+	width: 33%;
+}
+
+.projectHeader {
+	background: #ccc;
+}
+
+.weekLinks {
+	float:right;
+}
+
+/* Extra Globals */
+
+.right {
+	float: right;
+	position: relative;
+	top: -15px;
+}
+
+.important {
+	color: #cf2828;
+	font-weight: bold;
+}
+
+footer {
+	border-top:1px dotted #d3d3d3;
+	clear:both;
+	margin: 40px;
+	padding-top: 20px;
+}
+
+footer li {
+	font-size: 80%;
+	display: inline;
+	padding: 20px;
+}
+
+footer li a, footer li a:visited {
+	color: #fff;
+}
+
+footer li a:hover {
+	color: #FFD200;
+}
+
+</style>

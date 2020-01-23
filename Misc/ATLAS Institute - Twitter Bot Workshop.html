@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+<title>ATLAS Institute - Twitter Bot Workshop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="syllabus.css" rel="stylesheet" type="text/css">
+<!-- Load jQuery -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<!-- Load ScrollTo --><script type="text/javascript" src="http://flesler-plugins.googlecode.com/files/jquery.scrollTo-1.4.2-min.js"></script>
+<!-- Load LocalScroll -->
+<script type="text/javascript" src="http://flesler-plugins.googlecode.com/files/jquery.localscroll-1.2.7-min.js"></script>
+<!-- javascript that will initiate jQuery and the LocalScroll plugin --><script type="text/javascript">// <![CDATA[
+    // When the document is loaded...
+    $(document).ready(function()
+    {
+        // Scroll the whole document
+        $('body').localScroll({
+        	target:'body',
+        	offset:-90
+        });
+ 
+    });
+ 
+// ]]>
+</script>
+</head>
+
+<body>
+
+<nav id="mainNav">
+	<ul>
+		<li><a href="index.html">class/workshop list</a></li>
+		<li><a href="mailto:matthew.bethancourt@colorado.edu">contact</a></li>
+	</ul>
+</nav>							
+
+<nav id="subNav">
+	<a href="">slides</a>	  			 
+	/ <a href="">examples</a>		 
+			
+</nav>
+
+<div id="page-container">
+
+<div id="content">
+
+	<!-- Sidebar -->
+	<div id="sidebar">
+	<header><hgroup>
+		<h1><a href="atlas.colorado.edu">ATLAS<br />Institute</a></h1>
+		<h2>M Bethancourt</h2>
+		<h3>Twitter Bots!</h3>
+	</hgroup></header>
+	</div>
+
+	<!-- Main Content -->
+<div id="main">
+
+<h4><p>Are you interested in building useful, witty or confusing internet bots? Learn how to make a Twitter Bot below, and revel as your creation routinely confounds the world! We'll be using Python and dipping into the command line a bit, but no previous programming experience is required. Let's get to it!</p></h4>
+
+
+	<section>
+	<h2>Step 1: Create a Twitter Account for your bot</h2>
+		<p>You could use your already existing Twitter account, and send out random tweets from that, but that's only kind of fun, right? Don't you want to create a character that sends these tweets out? But how do we do this since Twitter only lets you use one email per account? We could create a new gmail account, but that's getting clunky. Can I let you in on a little secret?</p>
+		<p>*shh* Gmail lets you create add-on email addresses *shh*</p>
+		<p>What?!</p>
+		<p>That's right: you can use yourgmail+botname@gmail.com</p>
+		<p><em>Bonus tip: next time you sign up for a newsletter or commerce site, use yourgmail+commerce@gmail.com and set up a smart mailbox to autoforward unwanted emails to a special folder. You're welcome.</em></p>
+		<p>Okay, now go through the rest of the sign-up steps. Uncheck all the options (unless you want to start curating a feed for your robot friend). You <em>will</em> have to add your phone number, since Twitter requires this for all application development (but luckily they stopped requiring unique numbers for each application created. That was a pain!)</p>
+		<p></p>
+		
+	<h2>Step 2: Create Your Application</h2>
+		<p>Head over to <a href="http://apps.twitter.com">dev.twitter.com</a> and click on "Create New App"</p>
+		<p>Fill out the information. Link to your personal website if you want to get credit for your creation. Don't if you want to remain mysterious! (note: make sure you do the full URL address)</p>
+		<p>Agree to the terms and click "Create Your Twitter Application"</p>
+		<p></p>
+		
+	<h2>Step 3: Get Your Keys and Access Tokens</h2>
+		<p>Click on the link for "Keys and Access Tokens". Scroll to the bottom and click "Create my access token"</p>
+		<p>Copy all of the following in to a new text file called <strong>secrets.py</strong>: </p>
+		<ul>
+			<li>Consumer Key (API Key)</li>
+			<li>Consumer Secret (API Secret)</li>
+			<li>Access Token</li>
+			<li>Access Token Secret</li>
+		</ul>
+		<p>It should look like this (keep those quotation marks since these tokes are strings):</p>
+		<pre><code>
+  #configuration
+  C_KEY = 'your consumer key'
+  C_SECRET = 'your consumer secret'
+  A_TOKEN = 'your access token'
+  A_TOKEN_SECRET = 'your access token secret'
+		</code></pre>
+		<p></p>
+		
+	<h2>Step 4: Create a folder for your bots / bot</h2>
+		<p>Save <strong>secrets.py</strong> into a folder specifically for your bot. I have a folder in my home folder called Bots where I store them all for ease of remembering.</p>
+		<p>Also create a new file for the main bot called <strong>bot.py</strong></p>
+		<p></p>
+		
+	<h2>Download and Install Tweepy</h2>
+		<p>Fire up Terminal and in the command line type:</p>
+		<pre><code>
+  $ pip install tweepy
+  		</code></pre>
+		<p>Note: you will need to install <a href="https://www.python.org/downloads/">python</a> and <a href="https://pip.pypa.io/en/stable/">pip</a> if you don't have them</p>
+		
+	<h2>Step 5: Write the Bot!</h2>
+		<p>Make sure to check out Twitter's <a href="https://support.twitter.com/articles/76915">bot rules</a>, but the main gist is, "Be cool. Don't annoy people."</p>
+		<p>This is where you get to shine! You can import lines from a text file or use the huge amount of APIs that exist out there. Check out <a href="https://www.wordnik.com">Wordnik</a> for word-based tweets, <a href="http://www.wunderground.com/weather/api/">Weather Underground</a> for weather info, <a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> for screen-scraping, or <a href="http://www.programmableweb.com">Programmable Web</a> for a huge directory of APIs</p>
+		<p>Here's a "Hello World!" for your <strong>bot.py</strong> file to get you going:</p>
+		<p><em>Note: For this and all other code samples... if you copy and paste this in, make sure to get rid of all the extra indents that python hates</em></p>
+		<pre><code>
+  #!/usr/bin/python
+  
+  from secrets import *
+  
+  import tweepy
+  
+  # twitter setup
+  auth = tweepy.OAuthHandler(C_KEY, C_SECRET)  
+  auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)  
+  api = tweepy.API(auth)
+  
+  tweet = "I made a Twitter Bot!";
+  
+  api.update_status(tweet)
+		</code></pre>
+		<p>For a simple text file parsing bot, try something like this:</p>
+		<pre><code>
+  #!/usr/bin/python
+  
+  from secrets import *
+  
+  import random
+  import tweepy
+  
+  # twitter setup
+  auth = tweepy.OAuthHandler(C_KEY, C_SECRET)  
+  auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)  
+  api = tweepy.API(auth)
+  
+  #get intro text
+  introText = open('intro.txt')
+  introList = introText.readlines()
+  introNum = random.randrange(len(introList))
+  intro = introList[introNum]
+  
+  #get outroText
+  outroText = open('outro.txt')
+  outroList = outroText.readlines()
+  outroNum = random.randrange(len(outroList))
+  outro = outroList[outroNum]
+  		
+  tweet = intro + outro
+  tweet = tweet.replace('\n', '')
+  
+  api.update_status(tweet)
+		</code></pre>
+		<p></p>
+	
+	<h2>Step 6: Schedule your bot</h2>
+	<p>Now, you could do this the easy way and just run your python code from the terminal every once in a while, but what's the fun in that? We've got a couple different methods of setting this up to happen automatically.</p>
+	<h3>Method 1: CRONTAB</h3>
+	<p>We can have it running on your own computer at specific times by writing a cron job to do it on a schedule.</p>
+	<p>Get back into Terminal and open up the cron editor by typing...
+	<pre><code>
+  env EDITOR=nano crontab -e
+	</code></pre>
+and you'll see
+	<pre><code>
+  *	*	*	*	* 		
+	</code></pre>
+	The asteriks (which are separated by tabs, by the way, NOT spaces) signify how often you want the job to run</p>
+	<p>minutes (0-59) / hour (0-23) day (1-31) / month (1-12) / day of the week (0=Sunday, 6=Saturday)</p>
+	<p>So...
+		<ul>
+			<li>every day at 1 = 0 13 * * *</li>
+			<li>every 30 minutes = */30 * * * *</li>
+			<li>every Wednesday = * * * * 3</li>
+			<li>every 3 hours = 0 */5 * * *
+		</ul>
+	</p>
+	<p>Write your cron job into the editor. Hit Control + O to write it out and Control + X to exit. The following example cron job will execute our bot every Friday at midnight
+	<pre><code>
+  0	0	*	*	5	. /etc/profile: python /Users/You/Bots/YourFolder/bot.py
+	</code></pre>
+	
+	<h3>Method 2: Heroku</h3>
+	<p>Heroku is a cloud platform that lets you build and deploy all sorts of apps. For our purposes we'll be able to store our bot up there and let it go wild.</p>
+	 <p>First, we'll need to make a few changes to our bot.py file to make the timing work on the server. Open it back up and add:</p>
+	 <pre><code>
+  #!/usr/bin/python
+  
+  from secrets import *
+
+  import tweepy
+  import time
+
+  # twitter setup
+  auth = tweepy.OAuthHandler(C_KEY, C_SECRET)  
+  auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)  
+  api = tweepy.API(auth)
+
+  tweet = "Some solid gold recipes are on the way!";
+
+  while True:
+	  tweet = "add your tweet here"
+	  api.update_status(tweet)
+	  time.sleep(300)
+	</code></pre>
+<p>Next, you will need to <a href="https://signup.heroku.com">sign up</a> for a free Heroku account if you don't already have one.</p>
+	 <p><a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">Download</a> and install the Heroku Command Line Interface (CLI). Alternatively you can use install via Homebrew with:</p>
+	 
+	<pre><code>
+  $ brew install heroku/brew/heroku
+	</code></pre>
+	
+	<p>Test the install with:</p>
+	<pre><code>
+  $ heroku --version
+	</code></pre>
+	
+	<p>Login with:</p>
+	<pre><code>
+  $ heroku login
+	</code></pre>
+	
+	<p>We also need to create two other files for our Heroku app to work. One named <code>requirements.txt</code> and one named <code>Procfile</code> (make sure to remove the .txt file extension). Inside <code>requirements.txt</code> add the line:</p>
+	<pre><code>
+  tweepy==3.5.0
+	</code></pre>
+	
+	<p>Our Procfile tells our Heroku dyno what to do. Open it and add the line:</p>
+	<pre><code>
+  worker: python bot.by
+	</code></pre>
+	
+	<p>Now let's get this thing up on Heroku. Navigate to the folder where your bot lives and type:</p>
+	<pre><code>
+   $ git init
+   $ heroku create
+   $ git add .
+   $ git commit -m "initial commit"
+   $ git push heroku master
+   $ heroku ps:scale worker=1
+	</code></pre>
+	
+	<p>The last line makes sure that an instance of your bot is running. If you want to shut it down you can use the following:</p>
+	<pre><code>
+   $ heroku ps:scale worker=0
+	</code></pre>
+		 
+	 <p>Next steps: You can go through the <a href="https://devcenter.heroku.com/articles/getting-started-with-python#introduction">Getting Started with Python and Heroku Tutorial</a> for more advanced methods.</p>
+	
+	
+	
+	<h2>Step 7: Get out there and go nuts!</h2>
+	<p>This is just the tip of the iceberg. Imagine running a bot on a Raspberry Pi that tweets at your room-mates every time the fridge is left open. Or a dog-feeder that works when you tweet at it. Or a bot that finds cute pictures of cats and tweets them out with vaguely synical undertones!</p> 
+	<p>The world is your oyster. The power is in your hands. Go be amazing. The fate of the world wide web depends on it.</p>
+		
+		
+		
+
+		
+
+			
+	</section>
+
+</div><!-- end main -->
+</div><!-- end content -->
+</div><!-- end pageContainer -->
+    
+<footer>
+	<ul>
+		<li><a href="http://tam.colorado.edu/">TAM</a></li>
+		<li><a href="http://atlas.colorado.edu">ATLAS Institute</a></li>
+		<li><a href="http://colorado.edu">UC Boulder</a></li>
+	</ul>
+
+</footer>
+
+</body>
+</html>
